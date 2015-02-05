@@ -1,0 +1,20 @@
+{
+  "name": "Mocha-Portfolio",
+  "version": "0.0.0",
+  "homepage": "https://github.com/complikatyed/Mocha-Portfolio",
+  "authors": [
+    "Katye Russell <katye.russell@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "chai": "~1.10.0"
+  }
+}
