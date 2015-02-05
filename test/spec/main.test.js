@@ -13,10 +13,39 @@ describe('hello', function () {
   });
 });
 
+
 describe('getStock', function () {
-  it('should return a stock object', function () {
-    getStock('AAPL').Name.should.equal('Apple Inc');
-    getStock('MSFT').Name.should.equal('Microsoft Corp');
+  it('should return a stock object', function (done) {
+    getStock('AAPL', function (stock) {
+      stock.Name.should.equal('Apple Inc');
+      done();
+    });
+  });
+  it('should return another stock object', function (done) {
+    getStock('MSFT', function (stock) {
+      stock.Name.should.equal('Microsoft Corp');
+      done();
+    });
+  });
+});
+
+
+describe('addStockToTable', function () {
+  it('should use a row to the table', function () {
+    var stock = {Name: "SuperCorp", Symbol: "SCRP", LastPrice: 12.34 };
+    $('tr').length.should.equal(0);
+    addStockToTable(stock);
+    $('tr').length.should.equal(1);
+  });
+  it('should use stock data in the appended row', function () {
+    var stock = {Name: "SuperCorp", Symbol: "SCRP", LastPrice: 12.34 },
+        $row  = addStockToTable(stock),
+        $tds  = $row.find('td');
+
+    $tds.length.should.equal(3);
+    $($tds[0]).text().should.equal("SuperCorp");
+    $($tds[1]).text().should.equal("SCRP");
+    $($tds[2]).text().should.equal("12.34");
   });
 });
 
