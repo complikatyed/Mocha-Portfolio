@@ -13,8 +13,30 @@ describe('hello', function () {
   });
 });
 
+describe('totalStocks', function () {
+  it('should return a sum of the LastPrices', function () {
+    var stocks1 = [
+                    { Symbol: 'AAPL', LastPrice: 12.45 },
+                    { Symbol: 'MSFT', LastPrice: 23.56 }
+                  ],
+        stocks2 = [
+                    { Symbol: 'BANANA', LastPrice: 0.1 },
+                    { Symbol: 'XBUCKS', LastPrice: 0.2 }
+                  ];
+
+    totalStocks(stocks1).should.be.closeTo(36.01, 0.01);
+    totalStocks(stocks2).should.be.closeTo(0.3, 0.01);
+  });
+});
+
 describe('DOM', function () {
   describe('table', function () {
+    before(function () {
+     if (window.__karma__) {
+      $('body').append('<table><thead></thead><tbody></tbody></table>');
+     }
+   });
+
     beforeEach(function () {
       $('tbody').empty();
     });
@@ -46,6 +68,12 @@ describe('DOM', function () {
         addStockToTable(stock);
         $('tr').length.should.equal(1);
       });
+      it('should ignore a not found stock ticker', function () {
+        var stock = { Message: 'No symbol matches found for XXXX.' };
+        $('tr').length.should.equal(0);
+        addStockToTable(stock);
+        $('tr').length.should.equal(0);
+      });
       it('should use stock data in the appended row', function () {
         var stock = { Name: 'SuperCorp', Symbol: 'SCRP', LastPrice: 12.34 },
             $row  = addStockToTable(stock),
@@ -74,6 +102,12 @@ describe('ASYNC', function () {
         stock.Name.should.equal('Microsoft Corp');
         done();
       });
+    });
+    it('should return a message if no stock is found', function (done) {
+      getStock('XXXX', function (stock) {
+        stock.Message.should.exist();
+        done();
+      })
     });
   });
 
