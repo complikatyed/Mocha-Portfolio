@@ -1,0 +1,30 @@
+{
+  "name": "Mocha-Portfolio",
+  "version": "1.0.0",
+  "description": "sure",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "karma": "^0.12.31",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.1.0",
+    "phantomjs": "^1.9.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/complikatyed/Mocha-Portfolio.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/complikatyed/Mocha-Portfolio/issues"
+  },
+  "homepage": "https://github.com/complikatyed/Mocha-Portfolio"
+}
