@@ -74,7 +74,7 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-    cutomLaunchers: sauceLaunchers,
+    customLaunchers: sauceLaunchers,
 
     sauceLabs: {
       testName: 'Unit Tests'
