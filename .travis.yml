@@ -8,7 +8,10 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 script:
-  - npm run test -- --single-run
+  - npm run test-once
+after_script:
+  - cat ./coverage/PhantomJS*/lcov.info | ./node_modules/codeclimate-test-reporter/bin/codeclimate.js
 env:
   global:
-    secure: QrQ7ITfU6SC0uVk3r1xgOgswvTYX3wZtvWeXnE2t7QstzivJM9C91DOmp+Wbgr8k6RNwBDZMhzZJcWkzwvbfOfU0i0i4Lw7L/gfWVPKFoVWpyqCOyTIfsblMtBcLEgCbJ++cEms+tDl2hbz95iWuC608XPvFC+TrrcsVFudStok=
+    - secure: QrQ7ITfU6SC0uVk3r1xgOgswvTYX3wZtvWeXnE2t7QstzivJM9C91DOmp+Wbgr8k6RNwBDZMhzZJcWkzwvbfOfU0i0i4Lw7L/gfWVPKFoVWpyqCOyTIfsblMtBcLEgCbJ++cEms+tDl2hbz95iWuC608XPvFC+TrrcsVFudStok=
+    - secure: ZMKSo+0SQ0lxlSOw07nKfj3+CLM00z8E4hJngCLCYe+mSaGYhSmEQMWoYouICxwfCOtWLFHjwKC+syrICbFyM/KAATlls3q0ouS4WqiDopp59fXp8GbYwL2aCIxFVD45msvztH27idszEAGeHIqjpZEm/1Ol7nPnWQVfROsO0Ic=
